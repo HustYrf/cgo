@@ -55,6 +55,7 @@ func (p *UserConterller) login(w http.ResponseWriter, r *http.Request) {
 		cgo.ResultFail(w, "user does not exist")
 		return
 	}
+	password = utils.Md5En(password)
 	if users[0].Password != password {
 		cgo.ResultFail(w, "password error")
 		return
